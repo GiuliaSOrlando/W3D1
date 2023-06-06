@@ -3,7 +3,7 @@
   prima e gli ultimi 3 della seconda. Converti la stringa risultante in maiuscolo e mostrala con un console.log().
 */
 
-const conc1 = (str1, str2) => (str1.slice(0, 2) + str2.slice(-4)).toUpperCase()
+const conc1 = (str1, str2) => (str1.slice(0, 2) + str2.slice(-3)).toUpperCase()
 
 firstEl = "Lorem ipsum"
 secondEl = "dolor sit amet"
@@ -16,7 +16,7 @@ console.log(conc1(firstEl, secondEl))
 
 //Funzione con for e push
 
-randomNumbers = (length, max) => {
+const randomNumbers = (length, max) => {
   const arr = []
   for (let i = 0; i < length; i++) {
    arr.push(Math.floor(Math.random() * max) + 1)
@@ -28,7 +28,7 @@ console.log(randomNumbers(10, 100))
 
 //Funzione con il constructor Array
 
-arr1 = (length, max) => [...new Array(length)].map(() => Math.round(Math.random() * max) + 1)
+const arr1 = (length, max) => [...new Array(length)].map(() => Math.round(Math.random() * max) + 1)
 
 console.log(arr1(10, 100))
 
@@ -45,7 +45,7 @@ console.log(evenNumbers)
   Scrivi una funzione per sommare i numeri contenuti in un array
 */
 
-totalSum = (arr2) => {
+const totalSum = (arr2) => {
   let total = 0
   arr2.forEach(num => {
     total += num
@@ -63,7 +63,7 @@ totalSum(exampleArray)
   Scrivi una funzione per sommare i numeri contenuti in un array
 */
 
-totalSum1 = (arr3) => arr3.reduce((total, num) => total + num)
+const totalSum1 = (arr3) => arr3.reduce((total, num) => total + num)
 
 console.log(totalSum(exampleArray))
 
@@ -71,7 +71,7 @@ console.log(totalSum(exampleArray))
   Scrivi una funzione che, dato un array di soli numeri e un numero n come parametri, ritorni un secondo array con tutti i valori del precedente incrementati di n
 */
 
-incrementedArr = (arr4) => arr4.map(num => num + 1)
+const incrementedArr = (arr4) => arr4.map(num => num + 1)
 exampleArray1 = [...arr1(2,20)]
 
 console.log("Questo è il mio array di partenza " + exampleArray1)
@@ -91,7 +91,7 @@ console.log(stringLength(newExampleArr))
 */
 
 const arr99 = []
-for (var i = 1; i <= 100; i++) {
+for (var i = 1; i < 100; i++) {
   arr99.push(i);
 }
 
@@ -219,40 +219,44 @@ const movies = [
   Scrivi una funzione per trovare il film più vecchio nell'array fornito.
 */
 
-let min = 2023
-let title = ''
-movies.forEach((old) => {
-  if(Number(old.Year) < min){
-    min = Number(old.Year)
-    title = old.Title
-  }
-})
+movies.sort((a,b) => a.Year - b.Year)
+console.log(movies[0])
 
-console.log(title)
+// movies.forEach((e) => console.log(e))  <-- Se fossi interessata ad ordinarli tutti dal più vecchio
 
-/* ESERCIZIO 10
+/* ESERCIZIO 10 
   Scrivi una funzione per ottenere il numero di film contenuti nell'array fornito.
 */
 
-const count = movies.filter(item => item.title === '0').length
-
-console.log(count)
+console.log(movies.length)
 
 /* ESERCIZIO 11 (map)
   Scrivi una funzione per creare un array con solamente i titoli dei film contenuti nell'array fornito.
 */
 
+let titleArr = movies.map(movies => movies.Title)
+console.log(titleArr)
+
 /* ESERCIZIO 12 (filter)
   Scrivi una funzione per ottenere dall'array fornito solamente i film usciti nel millennio corrente.
 */
+
+let recentMovies = movies.filter((e) => e.Year > 2000)
+console.log(recentMovies)
 
 /* ESERCIZIO 13 (reduce)
   Scrivi una funzione per calcolare la somma di tutti gli anni in cui sono stati prodotti i film contenuti nell'array fornito.
 */
 
+let moviesYears = movies.map(movies => +movies.Year)
+let sumYears = moviesYears.reduce((x, y) => x + y, 0)
+console.log(sumYears)
+
 /* ESERCIZIO 14 (find)
   Scrivi una funzione per ottenere dall'array fornito uno specifico film (la funzione riceve un imdbID come parametro).
 */
+
+
 
 /* ESERCIZIO 15 (findIndex)
   Scrivi una funzione per ottenere dall'array fornito l'indice del primo film uscito nell'anno fornito come parametro.
