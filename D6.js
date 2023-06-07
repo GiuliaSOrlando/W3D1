@@ -219,8 +219,12 @@ const movies = [
   Scrivi una funzione per trovare il film più vecchio nell'array fornito.
 */
 
-movies.sort((a,b) => a.Year - b.Year)
-console.log(movies[0])
+let oldestMovies = (arr8) => {
+  arr8.sort((a,b) => a.Year - b.Year)
+  return arr8[0]
+}
+
+console.log('Il film più vecchio è: ', oldestMovies(movies))
 
 // movies.forEach((e) => console.log(e))  <-- Se fossi interessata ad ordinarli tutti dal più vecchio
 
@@ -228,14 +232,15 @@ console.log(movies[0])
   Scrivi una funzione per ottenere il numero di film contenuti nell'array fornito.
 */
 
-console.log(movies.length)
+let numMovies = (arr7) => arr7.length
+console.log('Questo è il numero di film contenuti nella lista: ', numMovies(movies))
 
 /* ESERCIZIO 11 (map)
   Scrivi una funzione per creare un array con solamente i titoli dei film contenuti nell'array fornito.
 */
 
-let titleArr = movies.map(movies => movies.Title)
-console.log(titleArr)
+let titleArr = (arr10) => arr10.map(arr10 => arr10.Title)
+console.log('Questo è un array con tutti i titoli ', titleArr(movies))
 
 /* ESERCIZIO 12 (filter)
   Scrivi una funzione per ottenere dall'array fornito solamente i film usciti nel millennio corrente.
@@ -256,8 +261,13 @@ console.log(sumYears)
   Scrivi una funzione per ottenere dall'array fornito uno specifico film (la funzione riceve un imdbID come parametro).
 */
 
-
+let getMovieByID = (IDNumber) => movies.find(({imdbID}) => imdbID === IDNumber)
+console.log(getMovieByID('tt0848228'))
 
 /* ESERCIZIO 15 (findIndex)
   Scrivi una funzione per ottenere dall'array fornito l'indice del primo film uscito nell'anno fornito come parametro.
 */
+
+let getIndexbyYear = (inputYear) => movies.findIndex(({Year}) => Year === inputYear)
+
+console.log(getIndexbyYear('2015')) //Il risultato di findIndex è da leggere sull'array ordinato in ordine crescente, ottenuto nell'esercizio 9
